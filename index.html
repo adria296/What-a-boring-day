@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bossing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0; 
+            height: 100vh;  
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center; 
+            position: relative; 
+            overflow: hidden; 
+            color: #fff; 
+            background: url(https://cdna.artstation.com/p/assets/images/images/025/789/352/original/pixel-jeff-galaxy-far-far-away.gif?1586928273) no-repeat center center fixed; 
+            background-size: cover; 
+        }
+
+        .fade {
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.5s ease; /* Transition effect */
+            display: none; /* Initially not displayed */
+        }
+
+        .fade.in {
+            opacity: 1; /* Fully visible */
+            display: block; /* Make visible when in */
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.8); 
+            color: #fff;
+            padding: 20px 40px; 
+            border-radius: 10px; 
+            text-align: center;
+            margin-bottom: 30px; 
+            width: 90%; 
+            max-width: 500px; 
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8); 
+        }
+
+        main {
+            text-align: center; 
+            padding: 30px;
+            border-radius: 15px; 
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8); 
+            animation: fadeIn 1s ease-in-out; 
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .social-links {
+            display: flex; /* Use flexbox for layout */
+            justify-content: center; /* Center icons horizontally */
+            margin-top: 20px; 
+        }
+
+        .social-link {
+            margin: 0 15px; /* Space between icons */
+            transition: transform 0.3s, color 0.3s; 
+        }
+
+        .social-link i {
+            font-size: 40px; /* Icon size */
+            color: #ffffff; /* Icon color */
+            transition: transform 0.3s, color 0.3s; /* Transition effect for size and color */
+        }
+
+        /* Discord - Purple Neon */
+        .social-link:nth-child(3):hover i {
+            transform: scale(1.5); /* Make the icon bigger */
+            color: #c759b5; /* Change to purple neon on hover */
+            text-shadow: 0 0 8px rgba(199, 89, 181, 0.8); /* Neon glow effect */
+        }
+
+        /* Instagram - Gradient Color */
+.social-link:nth-child(1):hover i {
+    transform: scale(1.5); /* Make the icon bigger */
+    color: #f09433; /* Instagram gradient start (orange) */
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); /* Standard background gradient */
+    background-clip: text; /* Standard property */
+    -webkit-background-clip: text; /* Webkit-specific property */
+    -webkit-text-fill-color: transparent; /* Ensure text fill is transparent for the gradient */
+    text-shadow: none; /* Remove shadow for gradient */
+}
+        /* Twitter - Light Blue */
+        .social-link:nth-child(2):hover i {
+            transform: scale(1.5); /* Make the icon bigger */
+            color: #1DA1F2; /* Light blue for Twitter */
+            text-shadow: 0 0 8px rgba(29, 161, 242, 0.8); /* Light blue glow effect */
+        }
+
+        footer {
+            margin-top: 30px; 
+            font-size: 14px; 
+            color: #ddd; 
+        }
+
+        /* Click to Enter Frame */
+        .enter-frame {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            bottom: 0; 
+            background-color: rgba(0, 0, 0, 0.8); 
+            z-index: 100; 
+            color: #fff; 
+            font-size: 24px; 
+            font-family: 'Press Start 2P', cursive; 
+            cursor: pointer; 
+            transition: opacity 0.5s ease; /* Transition effect */
+            flex-direction: column; /* Stack elements vertically */
+            text-align: center; /* Center text */
+        }
+
+        /* Description Animation */
+        .description {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 14px; 
+            margin-top: 10px; 
+            opacity: 0; /* Initially hidden */
+            animation: fadeIn 2s forwards; /* Fade-in animation */
+            animation-delay: 0.5s; /* Delay before starting the animation */
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="backgroundMusic" src="Japan.mp3" preload="auto"></audio> <!-- Audio element for background music -->
+
+    <div class="enter-frame" id="enterFrame">
+        Click to Enter
+        <div class="description" id="description">What A Boring Day.</div> <!-- Description element -->
+    </div> <!-- Click to Enter Frame -->
+
+    <header class="fade"> <!-- Use fade class for transition -->
+        <h1 style="font-size: 28px; font-family: 'Press Start 2P', cursive;">Welcome Po</h1>
+    </header>
+
+    <main class="fade"> <!-- Use fade class for transition -->
+        <div class="social-links"> <!-- Flexbox container for social links -->
+            <div class="social-link">
+                <a href="https://www.instagram.com/your_instagram_username" target="_blank" onmousedown="return false;" onfocus="this.blur();">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+            <div class="social-link">
+                <a href="https://x.com/dora19268" target="_blank" onmousedown="return false;" onfocus="this.blur();">
+                    <i class="fa-brands fa-square-x-twitter"></i>
+                </a>
+            </div>
+            <div class="social-link">
+                <a href="https://discord.com/" target="_blank" onmousedown="return false;" onfocus="this.blur();">
+                    <i class="fa-brands fa-discord"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fade"> <!-- Use fade class for transition -->
+        <p>Bossing Kamusta Buhay Buhay.</p>
+    </footer>
+
+    <script>
+        // Event listener for entering the main content
+        document.getElementById('enterFrame').addEventListener('click', function(event) {
+            this.style.opacity = '0'; // Fade out enter frame
+            this.style.pointerEvents = 'none'; // Disable pointer events
+            
+            // Play background music
+            const backgroundMusic = document.getElementById('backgroundMusic');
+            backgroundMusic.play();
+
+            // Delay before transitioning to main content
+            setTimeout(() => {
+                // Show the main content with fade-in effect
+                const header = document.querySelector('header');
+                const main = document.querySelector('main');
+                const footer = document.querySelector('footer');
+
+                header.classList.add('in');
+                main.classList.add('in');
+                footer.classList.add('in');
+            }, 1890); // 1 second delay
+        });
+    </script>
+</body>
+</html>
